@@ -1,0 +1,136 @@
+package jdbceg;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Book {
+
+	public static void main(String[] args) throws SQLException, ClassNotFoundException {
+
+		Class.forName("com.mysql.cj.jdbc.Driver");
+
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/amazon", "root", "Taru");
+		
+		
+		/*
+		 * //Max Price Statement stmt = con.createStatement(); String str =
+		 * "select book_name from book where price=(select max(price) from book)";
+		 * 
+		 * ResultSet rs = stmt.executeQuery(str);
+		 * 
+		 * { while(rs.next())
+		 * 
+		 * { //Display values //System.out.println("Book ID: " + rs.getInt("book_id"));
+		 * System.out.println(" Book Name: " + rs.getString("book_name"));
+		 * //System.out.println(" Price: " + rs.getString("price"));
+		 * //System.out.println(" Author Name : " + rs.getString("author_name"));
+		 * //System.out.println(" Isbn No: " + rs.getString("isbn_no"));
+		 * //System.out.println(" Publication : " + rs.getString("publication")); } 
+		 * 
+		 * }
+		 * 
+		 */		
+		
+		
+	
+		
+		
+		/*
+		 * 
+		 *Delete Record
+		 * Statement stmt = con.createStatement(); { String sql = "DELETE FROM book " +
+		 * "WHERE isbn_no=1111"; stmt.executeUpdate(sql); }
+		 */		
+		
+
+		
+		
+		/*
+		 * 
+		 * Updating prices
+		 * Statement stmt = con.createStatement();
+		 * 
+		 * { //Reducing Prices String str = "UPDATE book " +
+		 * "SET price = price-((price*10)/100) WHERE author_name='Prashant Gaud'";
+		 * 
+		 * stmt.executeUpdate(str); }
+		 * 
+		 */		
+		
+		
+		
+		
+		/*Statement stmt = con.createStatement();
+		 
+		 //Finding Book from particular Publication
+		
+		   String str = "select * from book where publication=('DDPG Production')";
+		   
+		   ResultSet rs = stmt.executeQuery(str);
+	       
+		   {		      
+	         while(rs.next())
+	         
+	         {
+	            //Display values
+	            System.out.println("Book ID: " + rs.getInt("book_id"));
+	            System.out.println(" Book Name: " + rs.getString("book_name"));
+	            System.out.println(" Price: " + rs.getString("price"));
+	            System.out.println(" Author Name : " + rs.getString("author_name"));
+	            System.out.println(" Isbn No: " + rs.getString("isbn_no"));
+	            System.out.println(" Publication : " + rs.getString("publication"));
+	         }
+*/
+		
+		
+		
+		/*
+		 * { // Execute a query  Inserting Data in DATA Base
+		 * 
+		 * System.out.println("Inserting records into the table...");
+		 * 
+		 * String sql;
+		 * 
+		 * sql =
+		 * "INSERT INTO book VALUES (2,'My Name is Khand',1400,'SRK',2222,'JDBC Production')"
+		 * ; stmt.executeUpdate(sql); sql =
+		 * "INSERT INTO book VALUES (3,'Wings of Fire',1033,'APJ',3111,'DDPG Production')"
+		 * ; stmt.executeUpdate(sql); sql =
+		 * "INSERT INTO book VALUES (4,'Last Train',3000,'TTV',4111,'PGJ Production')";
+		 * stmt.executeUpdate(sql); sql =
+		 * "INSERT INTO book VALUES (5,'Lost in Space',5000,'Mike Sunday',5111,'Hill Production')"
+		 * ; stmt.executeUpdate(sql);
+		 * 
+		 * 
+		 * }
+		 */
+		
+		
+		
+		
+		/*
+		 *Creating Book Table
+		 *Statement stmt = con.createStatement();
+		 * { String sql = "CREATE TABLE Book " + "(book_ID int primary key, " +
+		 * " Book_Name VARCHAR(255), " + " price int, " + " author_name VARCHAR(255), "
+		 * + " isbn_no varchar(255)," + "publication VARCHAR(255))";
+		 * 
+		 * stmt.executeUpdate(sql);
+		 * System.out.println("Created table in given database..."); }
+		 */ 
+    
+
+		/*
+		 * { String sql = "DROP TABLE REGISTRATION"; stmt.executeUpdate(sql);
+		 * System.out.println("Table deleted in given database..."); }
+		 */ 
+         
+		
+		
+		
+}
+	
+}
