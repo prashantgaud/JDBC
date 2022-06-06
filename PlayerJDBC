@@ -1,0 +1,146 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.sql.Statement;
+
+
+public class Players
+{
+	private static Connection createConnection() throws ClassNotFoundException, SQLException {
+		
+		Class.forName("com.mysql.cj.jdbc.Driver"); 
+		 
+		 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/amazon","root","Taru");
+		 
+		 System.out.println("connected to Mysql database");
+		 return con;
+		
+	}
+
+	private static void SelectbyCondition(Connection con) throws SQLException 
+	{
+	
+		String q1 = "Select * from player1 where Country_Name = ?";
+		           
+		          
+		System.out.println("enter the country");
+		Scanner sc= new Scanner(System.in);
+		String Country =sc.next();
+					
+		PreparedStatement pmt = con.prepareStatement(q1);
+		
+		
+		pmt.setString(1,Country);
+		ResultSet rs=pmt.executeQuery();
+		
+		while(rs.next())
+		{
+			System.out.println(rs.getString(1)+"  "+rs.getInt(2)+"   "+rs.getInt(3)+"   "+rs.getInt(4)+"  "+rs.getString(5)+"  "+rs.getInt(6)+"  "+rs.getString(7));   
+		}
+		
+	}
+	
+	//update
+		private static void UpdateCondition(Connection con) throws SQLException 
+		{
+		String q2 = "update player1 set category= 'B' where Total_Run<=?";
+		PreparedStatement pmt = con.prepareStatement(q2);
+		System.out.println("enter the run");
+		Scanner sc2= new Scanner(System.in);
+		int Total_Run =sc2.nextInt();
+		pmt.setInt(1,Total_Run);
+		int row=pmt.executeUpdate();
+		
+		System.out.println("no of row affected= "+row);
+		
+       }
+		
+		//delete
+		private static void Delete(Connection con) throws SQLException 
+		{
+		String q3 = " delete from player1 where Total_run<=?";
+		PreparedStatement pmt = con.prepareStatement(q3);
+		System.out.println("enter the run");
+		Scanner sc3= new Scanner(System.in);
+	    int Total_Run=sc3.nextInt();
+		pmt.setInt(1,Total_Run);
+		 int row=pmt.executeUpdate();
+		
+		System.out.println("no of row affected= "+row);
+		
+		
+		}
+		
+		//max
+		private static void Selectmax(Connection con) throws SQLException 
+		{
+
+			String q4 = "select max(Total_Run) from player1 where Country_Name=? ";
+			           
+			          
+			System.out.println("enter the country");
+			Scanner sc4= new Scanner(System.in);
+			String Country =sc4.next();
+						
+			PreparedStatement pmt = con.prepareStatement(q4);
+			
+			
+			pmt.setString(1,Country);
+			ResultSet rs=pmt.executeQuery();
+			
+			while(rs.next())
+			{
+				System.out.println(rs.getString(1));   
+			}
+			
+	
+		}
+		
+		
+		private static void insertValues(Connection con) throws SQLException 
+		{
+			 System.out.println("Inserting records into the table...");
+			  
+			 Statement stmt = con.createStatement();
+
+			  String sql;
+			  
+			  sql = "INSERT INTO player1 VALUES ('Hardik',7000,140,1000,'India',99000,'A')"
+			  ;
+			  stmt.executeUpdate(sql); 
+			  
+			  sql = "INSERT INTO player1 VALUES ('Nitish Gaud',13300,40,2000,'India',10000,'B')"
+					  ;
+					  stmt.executeUpdate(sql);
+					  sql = "INSERT INTO player1 VALUES ('Gaud',4000,240,1000,'Nz',70000,'A')"
+							  ;
+							  stmt.executeUpdate(sql);
+							  sql = "INSERT INTO player1 VALUES ('Rahul',1000,340,14400,'Aus',100000,'C')"
+									  ;
+									  stmt.executeUpdate(sql);
+									  sql = "INSERT INTO player1 VALUES ('R Gaud',90000,740,1000,'SA',60000,'A')"
+											  ;
+											  stmt.executeUpdate(sql);
+		}
+	
+	public static void main(String[] args) throws ClassNotFoundException, SQLException 
+	{
+	
+		Connection con= createConnection();
+		 
+		//insertValues(con);
+		 SelectbyCondition(con);
+		 //Delete( con);
+		// UpdateCondition( con);
+		 Selectmax(con);
+
+	}
+
+
+	
+
+}
