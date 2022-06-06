@@ -1,0 +1,272 @@
+
+ class Student
+{
+	  int sid;
+	  String name;
+	  float coursefee;
+
+	  	  
+	  public Student(int id, String na, float fee) 
+	  {
+		
+		sid = id;
+		name = na;
+		coursefee = fee;
+	  }
+
+	  void displayStudent()
+	   {
+
+	  System.out.println(sid+name+coursefee);
+
+	   }  
+}	
+
+
+
+import java.util.Scanner;
+
+public class SManage
+{
+
+	public static Student[]  createStudent()
+	{
+		System.out.println("object created");
+		
+		Student[] s = new Student[2];
+		
+
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("enter two student value");
+		for(int i = 0;i<s.length;i++)
+		{
+							
+			s[i] = new Student(sc.nextInt(),sc.next(),sc.nextFloat());
+						
+		}
+		return s;
+		
+		
+		
+	}
+
+	public  void displayStudent(Student[] s) 
+	{
+	
+		for(int i = 0;i<s.length;i++)
+		{
+							
+			s[i].displayStudent();
+						
+		}
+		
+	 
+		
+	}
+	
+	
+}
+
+
+public class Test
+{
+	
+	public static void main(String[] args) 
+	{int i=0;
+	    SManage sm = new SManage();
+		
+		Student[] s=null;
+		while(i<2)
+		{
+					
+		System.out.println("1: createStudent");
+		System.out.println("2: displayStudent");
+		
+		Scanner sc = new Scanner(System.in);
+		int op = sc.nextInt();
+		if(op == 1)
+		{	
+		
+		s=sm.createStudent();
+		
+		}else if(op ==2)
+		{
+			sm.displayStudent(s);
+			
+		}
+		
+		i++;
+		
+		}
+		
+		
+}
+
+
+inheritance
+
+
+import java.util.Scanner;
+
+public class A 
+{
+   int i;
+   
+	void m1()
+	{
+		System.out.println(" i am in Class A method m1 " + i);
+	}
+	
+//	void readAValue()
+//	{System.out.println("enter value of i");
+//		Scanner s = new Scanner(System.in);
+//		 i = s.nextInt();
+//			
+//	}
+	
+	void readAValue(int i)
+	{
+	
+		 this.i = i;
+			
+	}
+	
+	
+}
+
+class B extends A
+{
+	int j;
+		
+	void m2()
+	{
+		
+		System.out.println(" im in class B method m2  " + j);
+		
+	}
+	
+//	void readBValue()
+//	{
+//		System.out.println("enter value of j");
+//		Scanner s = new Scanner(System.in);
+//		 j = s.nextInt();
+//			
+//	}
+	
+	void readBValue(int j)
+	{
+		this.j=j;
+			
+	}
+	
+	
+	
+}
+
+class Testinheritance
+{
+
+	public static void main(String[] args) 
+	{
+	
+		B b = new B();
+		// initialize through reference
+		
+//		b.i = 10;
+//		b.j = 20;
+
+		//initialize through method
+		
+		b.readAValue(10);
+		b.readBValue(20);
+		
+		b.m1();
+		b.m2();
+	
+		
+		
+	}
+	
+	
+}
+
+
+
+
+using constructor
+import java.util.Scanner;
+public class A 
+{
+   int i;
+   
+   
+   A(int i)
+   {
+	   this.i = i;
+   }
+   
+	void m1()
+	{
+		System.out.println(" i am in Class A method m1 " + i);
+	}
+	
+
+	
+	
+}
+
+
+class B extends A
+{
+	int j;
+		
+	B(int i, int j)
+	   {
+		  super(i);
+		   this.j = j;
+	   }
+	
+	void m2()
+	{
+		
+		System.out.println(" im in class B method m2  " + j);
+		
+	}
+	
+
+	
+}
+
+class Testinheritance
+{
+
+	public static void main(String[] args) 
+	{
+	
+				
+		B b = new B(10,20);
+		b.m1();
+		b.m2();
+	
+		
+		
+	}
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
